@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Router, Switch, Route } from 'react-router-dom';
+import history from 'utils/history';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Frontpage from 'pages/Frontpage'
+import Checkout from 'pages/Checkout'
+import Confirmation from 'pages/Confirmation'
+import Terms from 'pages/Terms'
+
+const App = () => {
+    return (
+        <Router history={history}>
+            <>
+                <Switch>
+                    <Route exact={true} path="/" component={Frontpage} />
+                    <Route exact={true} path="/checkout" component={Checkout} />
+                    <Route exact={true} path="/confirmation" component={Confirmation} />
+                    <Route exact={true} path="/terms" component={Terms} />
+                </Switch>
+            </>
+        </Router>
+    );
 }
 
 export default App;
